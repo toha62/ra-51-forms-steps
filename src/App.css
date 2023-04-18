@@ -1,8 +1,6 @@
 @import url("//fonts.googleapis.com/css?family=Work+Sans:300,400,600");
 
-html,body {
-  background:#e9e9e9;
-  color:#333;
+html,body {  
   font-family:"Work Sans", sans-serif;
   font-size: 20px;
   line-height:1.4;
@@ -18,17 +16,27 @@ html,body {
   outline:none;
 }
 
+ul, button {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
-  margin: 0 auto;
+  width: 30rem;
+  margin: 5rem auto;
+  padding: 1rem;
+  background:rgb(240, 240, 240);
+  border-radius: 0.3rem;
 }
 
 form {
   display: flex;
-  justify-content: center;
+  justify-content: space-between
 }
 
 .form-box {  
-  margin: 1rem;  
+  /* margin: 1rem;   */
 }
 
 .form-input {
@@ -36,6 +44,10 @@ form {
   width: 10rem;
   padding-left: 0.7rem;
   padding-right: 0.7rem;
+
+  font-family:"Work Sans", sans-serif;
+  font-size: 20px;
+  line-height:1.4;
 
   border: #000 solid 1px;
   border-radius: 0.3rem;
@@ -61,4 +73,45 @@ label {
 
 .form-button:hover {
   background-color: #e0dede;
+}
+
+.step-list-container {
+  margin-top: 0.4rem;
+}
+
+.step-list_header {
+  display: flex;
+  justify-content: space-between
+}
+
+.step-list_header span { 
+  margin: 1rem;
+}
+
+.step-list_body {
+  display: flex;
+  justify-content: center;
+
+  border: #000 solid 1px;
+  border-radius: 0.3rem;
+}
+
+.item-list {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 0.5rem;
+}
+
+.item-action button {
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-right: 1rem;
+  border: none;
+  cursor: pointer;
 }

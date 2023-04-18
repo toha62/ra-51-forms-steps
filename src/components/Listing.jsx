@@ -3,19 +3,25 @@ import Item from './Item'
 export default function Listing({ items = [] }) {
 
   return (
-    <div className="item-list">
-      {items.map(item =>
-        <div key={item.listing_id} className="item">
-          <Item
-            url = {item.url}
-            imageUrl = {item.MainImage?.url_570xN}
-            title = {item.title}
-            currencyCode = {item.currency_code}
-            price = {item.price}
-            quantity = {item.quantity}
-          />
-        </div>  
-      )}
+    <div className="step-list-container">
+      <div className="step-list_header">
+        <span>Дата (ДД.ММ.ГГ)</span>
+        <span>Пройдено, км</span>
+        <span>Действия</span>
+      </div>
+      <div className="step-list_body">
+        <ul className="item-list">
+          {items.map(item =>
+            <li key={item.date} className="item">
+              <Item
+                date = {item.date}                
+                distance = {item.distance}               
+              />
+            </li>  
+          )}
+        </ul>
+      </div>
+      
     </div>
   );
 }
