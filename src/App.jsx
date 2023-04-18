@@ -4,10 +4,9 @@ import StepForm from './components/StepForm';
 
 function App() {
   return (
-    <>
-      <Listing items={items} /> 
+    <div className='container'>
       <StepForm />  
-    </>    
+    </div>    
   )
 }
 
