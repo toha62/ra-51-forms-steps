@@ -1,6 +1,6 @@
 import Item from './Item'
 
-export default function Listing({ items = [] }) {
+export default function Listing({ items, handleOnRemove, handleOnEdit }) {
   if (!items.length) {
     return null;
   }
@@ -18,7 +18,9 @@ export default function Listing({ items = [] }) {
             <li key={item.date} className="item">
               <Item
                 date = {item.date}                
-                distance = {item.distance}               
+                distance = {item.distance} 
+                handleOnRemove = {handleOnRemove}  
+                handleOnEdit = {handleOnEdit}            
               />
             </li>  
           )}
