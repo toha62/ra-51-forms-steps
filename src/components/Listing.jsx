@@ -1,6 +1,9 @@
 import Item from './Item'
 
 export default function Listing({ items = [] }) {
+  if (!items.length) {
+    return null;
+  }
 
   return (
     <div className="step-list-container">
