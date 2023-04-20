@@ -19,7 +19,7 @@ export default function Listing({ items, handleOnRemove, handleOnEdit }) {
               <Item
                 date = {item.date}                
                 distance = {item.distance} 
-                handleOnRemove = {handleOnRemove}  
+                handleOnRemove = {() => handleOnRemove(item.date)}  
                 handleOnEdit = {handleOnEdit}            
               />
             </li>  

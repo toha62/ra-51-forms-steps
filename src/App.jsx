@@ -4,13 +4,26 @@ import Listing from './components/Listing';
 
 // const items = [
 //   {date: '20.07.2019', distance: 5.7},
-//   {date: '19.07.2019', distance: 14.2},
-//   {date: '18.07.2019', distance: 3.4},
 // ];
 
 function App() {
   const [items, setItems] = useState([]);
-  const inputHandler = (dateValue, distValue) => {
+  const [dist, setDist] = useState('');
+
+  const handleOnChange = ({ target: {value} }) => {
+    if (!value) {
+      setDist('');
+    }
+    if (value.match(/^\d+\.?\d?$/)) {
+      setDist(value);
+    }    
+  };
+
+  const handleSubmit = (evt) => {   
+    evt.preventDefault();
+
+    const dateValue = evt.target.elements.date.value;
+    const distValue = evt.target.elements.distance.value;
     const index = items.findIndex(item => item.date === dateValue);
     
     if (index === -1) {
@@ -21,10 +34,17 @@ function App() {
       tempArr[index].distance += +distValue;
       setItems(tempArr);
     }    
+    
+    evt.target.reset();
+    setDist('');
   };
+  
+  const handleOnRemove = (key) => {    
+    const index = items.findIndex(item => item.date === key);
+    const tempArr = [...items];
 
-  const handleOnRemove = () => {
-    console.log('remove');
+    tempArr.splice(index, 1);
+    setItems(tempArr);
   }
 
   const handleOnEdit = () => {
@@ -34,7 +54,9 @@ function App() {
   return (
     <div className='container'>
       <StepForm
-        inputHandler = {inputHandler}
+        distance = {dist}
+        handleOnChange = {handleOnChange}
+        handleSubmit = {handleSubmit}
       />  
       <Listing
         items = {items}
