@@ -2,21 +2,22 @@ import { useState } from 'react';
 import StepForm from './components/StepForm';
 import Listing from './components/Listing';
 
-// const items = [
-//   {date: '20.07.2019', distance: 5.7},
-// ];
-
 function App() {
   const [items, setItems] = useState([]);
   const [dist, setDist] = useState('');
+  const [date, setDate] = useState('');
 
-  const handleOnChange = ({ target: {value} }) => {
+  const handleOnChangeDist = ({ target: {value} }) => {
     if (!value) {
       setDist('');
     }
     if (value.match(/^\d+\.?\d?$/)) {
       setDist(value);
     }    
+  };
+
+  const handleOnChangeDate = ({ target: {value} }) => {
+    setDate(value);
   };
 
   const handleSubmit = (evt) => {   
@@ -35,7 +36,7 @@ function App() {
       setItems(tempArr);
     }    
     
-    evt.target.reset();
+    setDate('');
     setDist('');
   };
   
@@ -47,15 +48,22 @@ function App() {
     setItems(tempArr);
   }
 
-  const handleOnEdit = () => {
+  const handleOnEdit = (key) => {
     console.log('edit');
+    const index = items.findIndex(item => item.date === key);
+
+    setDist(items[index].distance);
+    setDate(items[index].date);
+    handleOnRemove(key);
   }
 
   return (
     <div className='container'>
       <StepForm
         distance = {dist}
-        handleOnChange = {handleOnChange}
+        date = {date}
+        handleOnChangeDate = {handleOnChangeDate}
+        handleOnChangeDist = {handleOnChangeDist}
         handleSubmit = {handleSubmit}
       />  
       <Listing

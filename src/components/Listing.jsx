@@ -20,7 +20,7 @@ export default function Listing({ items, handleOnRemove, handleOnEdit }) {
                 date = {item.date}                
                 distance = {item.distance} 
                 handleOnRemove = {() => handleOnRemove(item.date)}  
-                handleOnEdit = {handleOnEdit}            
+                handleOnEdit = {() => handleOnEdit(item.date)}            
               />
             </li>  
           )}
